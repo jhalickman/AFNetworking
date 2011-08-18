@@ -43,7 +43,9 @@
     _activityCount = MAX(activityCount, 0);
     [self didChangeValueForKey:@"activityCount"];
 
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:self.activityCount > 0];
+	#if TARGET_OS_IPHONE
+		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:self.activityCount > 0];
+	#endif
 }
 
 - (void)startAnimating {

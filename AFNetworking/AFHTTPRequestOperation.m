@@ -244,7 +244,9 @@ static inline BOOL AFHTTPOperationStateTransitionIsValid(AFHTTPOperationState fr
     
     [self.connection start];
 
-    [runLoop run];
+	#if TARGET_OS_IPHONE
+		[runLoop run];
+	#endif
 }
 
 - (void)cancel {
